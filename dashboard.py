@@ -30,7 +30,7 @@ def chargement_explanation(id_input, dataframe, model, sample):
 
 
 df = chargement_data(path_df_red_pred)
-df = df.drop(['Unnamed: 0'], axis=1, inplace=True)
+df.drop(['Unnamed: 0'], axis=1, inplace=True)
 
 liste_id = df['SK_ID_CURR'].tolist()
 
