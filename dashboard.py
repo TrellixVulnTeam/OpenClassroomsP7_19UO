@@ -62,9 +62,8 @@ def main():
 
         st.write(
             'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
-    st.write(data)
+        st.write(data)
 
-    st.markdown(chaine)
 
 if __name__ == '__main__':
     main()
