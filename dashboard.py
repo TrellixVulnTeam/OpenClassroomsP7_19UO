@@ -39,7 +39,7 @@ def request_prediction(API_url, data):
         raise Exception(
             "Request failed with status {}, {}".format(response.status_code, response.text))
 
-    return response.json()
+    return response
 
 df = chargement_data(path_df_red_pred)
 
