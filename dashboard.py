@@ -150,8 +150,6 @@ def main():
     st.write(df_client)
 
 '''
-    else:
-        st.write('Identifiant non reconnu')
 
 
 
