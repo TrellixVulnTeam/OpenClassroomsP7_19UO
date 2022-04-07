@@ -30,33 +30,30 @@ def chargement_explanation(id_input, dataframe, model, sample):
 
 
 df = chargement_data(path_df_red_pred)
+data = df[df['SK_ID_CURR'] == int(id)].drop(['Unnamed: 0'], axis=1)
+
 liste_id = df['SK_ID_CURR'].tolist()
 
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
 st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
-id_input = st.text_input('Veuillez saisir l\'identifiant d\'un client:', )
-# chaine = "l'id Saisi est " + str(id_input)
-# st.write(chaine)
 
 def main():
+    id = st.sidebar.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
 
-    if (int(id_input) in liste_id):  # quand un identifiant correct a été saisi on appelle l'API
 
-        # Appel de l'API :
+    API_url = "http://127.0.0.1:5000/"
 
-        API_url = "http://127.0.0.1:5000/"
+    predict_btn = st.button('Prédire')
+    if predict_btn:
+        data = df[df['SK_ID_CURR']==int(id)].drop(['Unnamed: 0'], axis=1)
+        pred = request_prediction(API_url, data)[0]
 
-        predict_btn = st.button('Prédire')
-        if predict_btn:
-            data = df[df['SK_ID_CURR']==int(id)]
-            pred = request_prediction(API_url, data)[0]
+    st.write(
+        'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
+    st.write(data)
 
-        st.write(
-            'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
-        st.write(data)
-
-        st.markdown(chaine)
+    st.markdown(chaine)
     '''
     st.subheader("Caractéristiques influençant le score")
 
