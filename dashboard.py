@@ -7,7 +7,7 @@ from urllib.request import urlopen
 import json
 from urllib.request import urlopen
 import json
-
+import requests
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
@@ -28,6 +28,18 @@ def chargement_explanation(id_input, dataframe, model, sample):
                           model,
                           sample=sample)
 
+def request_prediction( data):
+    headers = {"Content-Type": "application/json"}
+
+    data_json = {'data': data}
+    response = requests.request(
+        method='POST', headers=headers, url=API_url, json=data_json)
+
+    if response.status_code != 200:
+        raise Exception(
+            "Request failed with status {}, {}".format(response.status_code, response.text))
+
+    return response.json()
 
 df = chargement_data(path_df_red_pred)
 
