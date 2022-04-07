@@ -30,7 +30,7 @@ def chargement_explanation(id_input, dataframe, model, sample):
 
 
 df = chargement_data(path_df_red_pred)
-liste_id = dataframe['SK_ID_CURR'].tolist()
+liste_id = df['SK_ID_CURR'].tolist()
 
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
