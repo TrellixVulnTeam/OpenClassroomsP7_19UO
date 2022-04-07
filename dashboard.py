@@ -60,8 +60,8 @@ def main():
         data = df[df['SK_ID_CURR']==int(id)]
         pred = request_prediction(API_url, data)[0]
 
-    st.write(
-        'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
+        st.write(
+            'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
     st.write(data)
 
     st.markdown(chaine)
