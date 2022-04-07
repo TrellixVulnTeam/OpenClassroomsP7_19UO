@@ -30,7 +30,7 @@ def chargement_explanation(id_input, dataframe, model, sample):
 
 
 df = chargement_data(path_df_red_pred)
-data = df[df['SK_ID_CURR'] == int(id)].drop(['Unnamed: 0'], axis=1)
+df = df.drop(['Unnamed: 0'], axis=1, inplace=True)
 
 liste_id = df['SK_ID_CURR'].tolist()
 
@@ -46,7 +46,7 @@ def main():
 
     predict_btn = st.button('Prédire')
     if predict_btn:
-        data = df[df['SK_ID_CURR']==int(id)].drop(['Unnamed: 0'], axis=1)
+        data = df[df['SK_ID_CURR']==int(id)]
         pred = request_prediction(API_url, data)[0]
 
     st.write(
