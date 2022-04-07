@@ -50,7 +50,7 @@ st.title('Dashboard Scoring Credit')
 st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
 
 def main():
-    id = st.sidebar.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
+    id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
 
 
     API_url = "http://127.0.0.1:5000/"
@@ -58,7 +58,7 @@ def main():
     predict_btn = st.button('Prédire')
     if predict_btn:
         data = df[df['SK_ID_CURR']==int(id)]
-        pred = request_prediction(API_url, data)[0]
+        pred = request_prediction(data)[0]
 
         st.write(
             'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
