@@ -53,6 +53,9 @@ def main():
     st.write(data)
 
     st.markdown(chaine)
+
+if __name__ == '__main__':
+    main()
     '''
     st.subheader("Caractéristiques influençant le score")
 
