@@ -28,7 +28,7 @@ def chargement_explanation(id_input, dataframe, model, sample):
                           model,
                           sample=sample)
 
-def request_prediction( data):
+def request_prediction(API_url, data):
     headers = {"Content-Type": "application/json"}
 
     data_json = {'data': data}
@@ -58,7 +58,7 @@ def main():
     predict_btn = st.button('Prédire')
     if predict_btn:
         data = df[df['SK_ID_CURR']==int(id)]
-        pred = request_prediction(data)[0]
+        pred = request_prediction(API_url,data)[0]
 
         st.write(
             'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
