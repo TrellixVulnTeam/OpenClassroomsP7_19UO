@@ -33,13 +33,17 @@ def request_prediction(API_url, data):
 
     data_json = {'data': data}
     response = requests.request(
-        method='POST', headers=headers, url=API_url, json=data_json)
+        method='GET', headers=headers, url=API_url, json=data_json)
 
     if response.status_code != 200:
         raise Exception(
             "Request failed with status {}, {}".format(response.status_code, response.text))
 
     return response
+
+def request(API_url, data) :
+    request = requests.get(API_url+str(data))
+    return request.json
 
 df = chargement_data(path_df_red_pred)
 
@@ -53,7 +57,7 @@ def main():
     id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
 
 
-    API_url = "http://127.0.0.1:5000/"
+    API_url = "http://127.0.0.1:8000/predict/"
 
     predict_btn = st.button('Prédire')
     if predict_btn:
@@ -61,11 +65,11 @@ def main():
         st.write(int(id))
         del data[0]
         st.write(data)
-        pred = request_prediction(API_url,data)[0]
+        pred = request(API_url,data)
 
         st.write(
             'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
-        st.write(data)
+        st.write(pred['prediction'])
 
 
 if __name__ == '__main__':
