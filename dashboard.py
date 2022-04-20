@@ -62,9 +62,8 @@ def main():
     predict_btn = st.button('Prédire')
     if predict_btn:
         data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
-        st.write(data)
         st.write(int(id))
-        del data[0]
+        del data[0][0]
         st.write(data)
         pred = request(API_url,data)
 
