@@ -66,7 +66,7 @@ def main():
         del data[0][0]
         st.write(data)
         pred = request(API_url,data)
-
+        st.write(pred)
         st.write(
             'Le prix médian d\'une habitation est de {:.2f}'.format(pred))
         st.write(pred['prediction'])
