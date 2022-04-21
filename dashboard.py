@@ -64,7 +64,7 @@ def main():
         data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
         st.write(int(id))
         del data[0][0]
-        st.write(data)
+        st.write(API_url+str(data))
         pred = request(API_url,data)
         st.write(pred)
         st.write(
