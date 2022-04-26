@@ -9,7 +9,7 @@ from urllib.request import urlopen
 import json
 import requests
 from urllib.request import urlopen
-from urllib.parse import quote
+import ast
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
@@ -44,14 +44,8 @@ def request_prediction(API_url, data):
     return response
 
 def request(API_url, data) :
-    url_str = "".join("data=" + quote(str(data), safe='[]'))
-    url = urlopen(API_url+"?"+url_str)
-    response = url.read()
-    #url_str = "&".join([param[0]+"="+quote(param[1], safe='[]'))
-    #request = requests.get(API_url+"?data="+str(data))
-    #request = requests.get(API_url + "?data=" + str(data))
-
-    return response
+    request = requests.get(API_url+"?data="+data)
+    return request.json()
 
 df = chargement_data(path_df_red_pred)
 
@@ -71,6 +65,9 @@ def main():
         data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
         st.write(int(id))
         del data[0][0]
+        data = str(data)
+        data = data.replace("[[", "(")
+        data = data.replace("]]", ")")
         pred = request(API_url,data)
         st.write(pred)
         st.write(
