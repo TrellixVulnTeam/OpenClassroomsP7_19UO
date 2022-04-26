@@ -8,6 +8,7 @@ import json
 from urllib.request import urlopen
 import json
 import requests
+from urllib.request import urlopen
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
@@ -42,7 +43,8 @@ def request_prediction(API_url, data):
     return response
 
 def request(API_url, data) :
-    request = requests.get(API_url+"?data="+str(data))
+    url_str = "".join("data=" + quote(str(data), safe='[]'))
+    request = requests.get(API_url, params=url_str)
     return request.json()
 
 df = chargement_data(path_df_red_pred)
@@ -55,7 +57,6 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 
 def main():
     id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
-
 
     API_url = "http://127.0.0.1:8000/predict/"
 
