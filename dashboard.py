@@ -68,6 +68,7 @@ def main():
         data = str(data)
         data = data.replace("[[", "(")
         data = data.replace("]]", ")")
+        data = data.replace(" ", "")
         pred = request(API_url,data)
         st.write(pred)
         st.write(
