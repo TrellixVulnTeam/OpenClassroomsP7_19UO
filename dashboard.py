@@ -44,7 +44,7 @@ def request_prediction(API_url, data):
     return response
 
 def request(API_url, data) :
-    request = requests.post(API_url+"?data="+data)
+    request = requests.get(API_url+"?data="+data)
     return request.json()
 
 df = chargement_data(path_df_red_pred)
