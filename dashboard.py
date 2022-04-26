@@ -45,11 +45,12 @@ def request_prediction(API_url, data):
 def request(API_url, data) :
     url_str = "".join("data=" + quote(str(data), safe='[]'))
     url = urlopen(API_url+"?"+url_str)
+    response = url.read()
     url_str = "&".join([param[0]+"="+quote(param[1], safe='[]')
     #request = requests.get(API_url+"?data="+str(data))
     #request = requests.get(API_url + "?data=" + str(data))
 
-    return url.read()
+    return response
 
 df = chargement_data(path_df_red_pred)
 
