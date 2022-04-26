@@ -9,6 +9,7 @@ from urllib.request import urlopen
 import json
 import requests
 from urllib.request import urlopen
+from urllib.parse import quote
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
