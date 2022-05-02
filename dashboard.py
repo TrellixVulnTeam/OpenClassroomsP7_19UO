@@ -8,7 +8,7 @@ from urllib.request import urlopen
 import ast
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+import SessionState
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
@@ -61,17 +61,21 @@ def main():
     id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
 
     API_url = "http://127.0.0.1:8000/predict/"
-
-    predict_btn = st.radio('Prédire')
-    if predict_btn:
+    predict_btn = st.empty()
+    details_btn = st.empty()
+    ss = SessionState.get(predict_btn=False)
+    if predict_btn.button('Prédiction') :
+        ss.predict_btn = True
+    if ss.predict_btn:
         data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
         data = clean(data)
         prediction = request(API_url,data)
         if prediction['prediction'] == 0 :
             st.write('Dossier validé par la banque')
-        st.write('Probabilité de remboursement :',1- list(prediction['proba'].values())[0])
-        details_btn = st.button('Voir caractéristiques du client vs autres clients')
-        if details_btn:
+        refund = (1- list(prediction['proba'].values())[0])*100
+        st.write('Probabilité de remboursement :',int(refund),'%')
+        ss = SessionState.get(details_btn=False)
+        if details_btn.button('Client vs autres clients') :
             graph(df_train,'EXT_SOURCE_3',id,df)
             graph(df_train,'EXT_SOURCE_2',id,df)
             graph(df_train,'DAYS_EMPLOYED',id,df)
