@@ -1,11 +1,7 @@
 # APP STREAMLIT : (commande : streamlit run XX/dashboard.py depuis le dossier python)
 import streamlit as st
-import numpy as np
 import pandas as pd
-import time
 import requests
-from urllib.request import urlopen
-import ast
 import matplotlib.pyplot as plt
 import seaborn as sns
 import SessionState
@@ -60,7 +56,7 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 def main():
     id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
 
-    API_url = "http://127.0.0.1:8000/predict/"
+    API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
     predict_btn = st.empty()
     details_btn = st.empty()
     ss = SessionState.get(predict_btn=False)
