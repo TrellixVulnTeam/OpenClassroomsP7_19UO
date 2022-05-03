@@ -56,9 +56,9 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 
 
 def main():
-    if 'id' in globals() :
+    try :
         last_id = id
-    else :
+    except :
         last_id = 0
     id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
