@@ -59,9 +59,7 @@ def main():
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
     predict_btn = st.empty()
-    details_btn = st.empty()
     ss = SessionState.get(predict_btn=False)
-    ss = SessionState.get(details_btn=False)
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
@@ -71,8 +69,11 @@ def main():
         if prediction['prediction'] == 0 :
             st.write('Dossier validé par la banque')
         refund = (1- list(prediction['proba'].values())[0])*100
-        st.progress(int(refund))
         st.write('Probabilité de remboursement :',int(refund),'%')
+        st.progress(int(refund))
+        details_btn = st.empty()
+        ss = SessionState.get(details_btn=False)
+
         if details_btn.button('Client vs autres clients') :
             ss.details_btn = True
         if ss.details_btn :
