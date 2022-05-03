@@ -55,11 +55,11 @@ st.title('Dashboard Scoring Credit')
 st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
 
 def main():
+    ss = SessionState.get(predict_btn=False)
     id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
     predict_btn = st.empty()
-    ss = SessionState.get(predict_btn=False)
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
