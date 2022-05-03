@@ -56,7 +56,7 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 
 
 def main():
-    if id in locals() :
+    if 'id' in locals() :
         last_id = id
     else :
         last_id = 0
