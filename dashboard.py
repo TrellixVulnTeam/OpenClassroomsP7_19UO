@@ -61,6 +61,8 @@ def main():
     predict_btn = st.empty()
     details_btn = st.empty()
     ss = SessionState.get(predict_btn=False)
+    ss = SessionState.get(details_btn=False)
+
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
@@ -71,11 +73,10 @@ def main():
             st.write('Dossier validé par la banque')
         refund = (1- list(prediction['proba'].values())[0])*100
         st.write('Probabilité de remboursement :',int(refund),'%')
-        ss2 = SessionState.get(details_btn=False)
         if details_btn.button('Client vs autres clients') :
-            ss2.details_btn = True
+            ss.details_btn = True
 
-        if ss2.details_btn :
+        if ss.details_btn :
             client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
                                           default=None)
             if 'EXT_SOURCE' in client_infos :
