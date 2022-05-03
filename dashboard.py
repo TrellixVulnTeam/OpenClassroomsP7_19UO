@@ -78,6 +78,10 @@ def main():
             graph(df_train,'PAYMENT_RATE',id,df_display)
             graph(df_train,'DAYS_EMPLOYED',id,df_display)
             graph(df_train,'DAYS_BIRTH',id,df_display)
+            graph(df_train,'AMT_ANNUITY',id,df_display)
+            graph(df_train,'AMT_CREDIT',id,df_display)
+            graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
+            graph(df_train,'AMT_GOODS_PRICE',id,df_display)
 
 
 
