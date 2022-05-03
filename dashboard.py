@@ -62,7 +62,6 @@ def main():
     details_btn = st.empty()
     ss = SessionState.get(predict_btn=False)
     ss = SessionState.get(details_btn=False)
-    ss.details_btn = False
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
