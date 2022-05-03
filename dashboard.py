@@ -56,16 +56,17 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 
 
 def main():
-    ss = SessionState.get(id=0)
-    last_id = ss.id
-    ss.id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
+    if id in locals() :
+        last_id = id
+    else :
+        last_id = 0
+    id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
     ss = SessionState.get(predict_btn=False)
     predict_btn = st.empty()
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
-
-    if last_id != ss.id :
+    if last_id != id :
         if predict_btn.button('Prédiction') :
             ss.predict_btn = True
         if ss.predict_btn:
