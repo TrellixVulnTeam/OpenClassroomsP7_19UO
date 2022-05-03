@@ -64,42 +64,45 @@ def main():
 
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
+
     if last_id != id :
         ss = SessionState.get(predict_btn=False)
         ss.predict_btn = False
-        predict_btn = st.empty()
-        if predict_btn.button('Prédiction') :
-            ss.predict_btn = True
-        if ss.predict_btn:
-            data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
-            data = clean(data)
-            prediction = request(API_url,data)
-            if prediction['prediction'] == 0 :
-                st.write('Dossier validé par la banque')
-            refund = (1- list(prediction['proba'].values())[0])*100
-            st.write('Probabilité de remboursement :',int(refund),'%')
-            st.progress(int(refund))
-            details_btn = st.empty()
-            ss = SessionState.get(details_btn=False)
 
-            if details_btn.button('Client vs autres clients') :
-                ss.details_btn = True
-            if ss.details_btn :
-                client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
-                                              default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+    ss = SessionState.get(predict_btn=False)
+    predict_btn = st.empty()
+    if predict_btn.button('Prédiction') :
+        ss.predict_btn = True
+    if ss.predict_btn:
+        data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
+        data = clean(data)
+        prediction = request(API_url,data)
+        if prediction['prediction'] == 0 :
+            st.write('Dossier validé par la banque')
+        refund = (1- list(prediction['proba'].values())[0])*100
+        st.write('Probabilité de remboursement :',int(refund),'%')
+        st.progress(int(refund))
+        details_btn = st.empty()
+        ss = SessionState.get(details_btn=False)
 
-                if 'EXT_SOURCE' in client_infos :
-                    graph(df_train,'EXT_SOURCE_3',id,df_display)
-                    graph(df_train,'EXT_SOURCE_2',id,df_display)
-                if 'AMT' in client_infos :
-                    graph(df_train,'AMT_ANNUITY',id,df_display)
-                    graph(df_train,'AMT_CREDIT',id,df_display)
-                    graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
-                    graph(df_train,'AMT_GOODS_PRICE',id,df_display)
-                if 'OTHERS' in client_infos :
-                    graph(df_train, 'PAYMENT_RATE', id, df_display)
-                    graph(df_train, 'DAYS_EMPLOYED', id, df_display)
-                    graph(df_train, 'DAYS_BIRTH', id, df_display)
+        if details_btn.button('Client vs autres clients') :
+            ss.details_btn = True
+        if ss.details_btn :
+            client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
+                                          default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+
+            if 'EXT_SOURCE' in client_infos :
+                graph(df_train,'EXT_SOURCE_3',id,df_display)
+                graph(df_train,'EXT_SOURCE_2',id,df_display)
+            if 'AMT' in client_infos :
+                graph(df_train,'AMT_ANNUITY',id,df_display)
+                graph(df_train,'AMT_CREDIT',id,df_display)
+                graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
+                graph(df_train,'AMT_GOODS_PRICE',id,df_display)
+            if 'OTHERS' in client_infos :
+                graph(df_train, 'PAYMENT_RATE', id, df_display)
+                graph(df_train, 'DAYS_EMPLOYED', id, df_display)
+                graph(df_train, 'DAYS_BIRTH', id, df_display)
 
 
 
