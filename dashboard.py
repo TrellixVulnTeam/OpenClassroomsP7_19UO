@@ -56,7 +56,7 @@ st.subheader("Prédictions de scoring client et comparaison à l'ensemble des cl
 
 
 def main():
-    ss = SessionState.get(id=None)
+    ss = SessionState.get(id=0)
     last_id = ss.id
     ss.id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
