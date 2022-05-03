@@ -73,6 +73,9 @@ def main():
         st.write('Probabilité de remboursement :',int(refund),'%')
         ss = SessionState.get(details_btn=False)
         if details_btn.button('Client vs autres clients') :
+            ss.details_btn = True
+
+        if ss.details_btn :
             client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
                                           default=None)
             if 'EXT_SOURCE' in client_infos :
