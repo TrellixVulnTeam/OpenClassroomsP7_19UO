@@ -73,11 +73,11 @@ def main():
         st.write('Probabilité de remboursement :',int(refund),'%')
         ss = SessionState.get(details_btn=False)
         if details_btn.button('Client vs autres clients') :
-            graph(df_display,'EXT_SOURCE_3',id,df)
-            graph(df_display,'EXT_SOURCE_2',id,df)
-            graph(df_display,'PAYMENT_RATE',id,df)
-            graph(df_display,'DAYS_EMPLOYED',id,df)
-            graph(df_display,'DAYS_BIRTH',id,df)
+            graph(df_train,'EXT_SOURCE_3',id,df_display)
+            graph(df_train,'EXT_SOURCE_2',id,df_display)
+            graph(df_train,'PAYMENT_RATE',id,df_display)
+            graph(df_train,'DAYS_EMPLOYED',id,df_display)
+            graph(df_train,'DAYS_BIRTH',id,df_display)
 
 
 
