@@ -64,7 +64,7 @@ def main():
 
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
-
+    st.write(last_id,id)
     if last_id != id and last_id !=0:
         st.write('Hey')
         ss.predict_btn = False
