@@ -72,17 +72,21 @@ def main():
         refund = (1- list(prediction['proba'].values())[0])*100
         st.write('Probabilité de remboursement :',int(refund),'%')
         ss = SessionState.get(details_btn=False)
-        teams_choice = st.multiselect("Teams:", ['EXT_SOURCE','AMT','OTHERS'], default=['EXT_SOURCE','AMT','OTHERS'])
         if details_btn.button('Client vs autres clients') :
-            graph(df_train,'EXT_SOURCE_3',id,df_display)
-            graph(df_train,'EXT_SOURCE_2',id,df_display)
-            graph(df_train,'PAYMENT_RATE',id,df_display)
-            graph(df_train,'DAYS_EMPLOYED',id,df_display)
-            graph(df_train,'DAYS_BIRTH',id,df_display)
-            graph(df_train,'AMT_ANNUITY',id,df_display)
-            graph(df_train,'AMT_CREDIT',id,df_display)
-            graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
-            graph(df_train,'AMT_GOODS_PRICE',id,df_display)
+            client_infos = st.multiselect("Teams:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
+                                          default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+            if 'EXT_SOURCE' in client_infos :
+                graph(df_train,'EXT_SOURCE_3',id,df_display)
+                graph(df_train,'EXT_SOURCE_2',id,df_display)
+            if 'AMT' in client_infos :
+                graph(df_train,'AMT_ANNUITY',id,df_display)
+                graph(df_train,'AMT_CREDIT',id,df_display)
+                graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
+                graph(df_train,'AMT_GOODS_PRICE',id,df_display)
+            if 'OTHERS' in client_infos :
+                graph(df_train, 'PAYMENT_RATE', id, df_display)
+                graph(df_train, 'DAYS_EMPLOYED', id, df_display)
+                graph(df_train, 'DAYS_BIRTH', id, df_display)
 
 
 
