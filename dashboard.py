@@ -65,8 +65,7 @@ def main():
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
 
-    if last_id != id :
-        ss = SessionState.get(predict_btn=False)
+    if last_id != id and last_id !=0:
         ss.predict_btn = False
 
     ss = SessionState.get(predict_btn=False)
