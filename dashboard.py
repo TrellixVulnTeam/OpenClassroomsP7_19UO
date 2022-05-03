@@ -62,11 +62,11 @@ def main():
         last_id = 0
     id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
-    ss = SessionState.get(predict_btn=False)
-    predict_btn = st.empty()
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
     if last_id != id :
+        ss = SessionState.get(predict_btn=False)
+        predict_btn = st.empty()
         if predict_btn.button('Prédiction') :
             ss.predict_btn = True
         if ss.predict_btn:
