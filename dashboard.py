@@ -72,6 +72,7 @@ def main():
         refund = (1- list(prediction['proba'].values())[0])*100
         st.write('Probabilité de remboursement :',int(refund),'%')
         ss = SessionState.get(details_btn=False)
+        teams_choice = st.multiselect("Teams:", ['EXT_SOURCE','AMT','OTHERS'], default=['EXT_SOURCE','AMT','OTHERS'])
         if details_btn.button('Client vs autres clients') :
             graph(df_train,'EXT_SOURCE_3',id,df_display)
             graph(df_train,'EXT_SOURCE_2',id,df_display)
