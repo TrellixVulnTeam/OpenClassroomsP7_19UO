@@ -53,10 +53,10 @@ liste_id = df['SK_ID_CURR'].tolist()
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
 st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
-ss = SessionState.get(id=None)
 
 
 def main():
+    ss = SessionState.get(id=None)
     last_id = ss.id
     ss.id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
