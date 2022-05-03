@@ -74,7 +74,10 @@ def main():
         if details_btn.button('Client vs autres clients') :
             graph(df_train,'EXT_SOURCE_3',id,df)
             graph(df_train,'EXT_SOURCE_2',id,df)
+            graph(df_train,'PAYMENT_RATE',id,df)
             graph(df_train,'DAYS_EMPLOYED',id,df)
+            graph(df_train,'DAYS_BIRTH',id,df)
+
 
 
 
