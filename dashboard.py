@@ -71,12 +71,14 @@ def main():
         if prediction['prediction'] == 0 :
             st.write('Dossier validé par la banque')
         refund = (1- list(prediction['proba'].values())[0])*100
+        st.progress(int(refund))
         st.write('Probabilité de remboursement :',int(refund),'%')
         if details_btn.button('Client vs autres clients') :
             ss.details_btn = True
         if ss.details_btn :
             client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
-                                          default=None)
+                                          default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+
             if 'EXT_SOURCE' in client_infos :
                 graph(df_train,'EXT_SOURCE_3',id,df_display)
                 graph(df_train,'EXT_SOURCE_2',id,df_display)
