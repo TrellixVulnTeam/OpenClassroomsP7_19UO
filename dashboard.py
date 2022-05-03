@@ -46,6 +46,7 @@ def clean(data) :
 
 df = chargement_data(path_df_red_pred)
 df_train = chargement_data(path_df_red_train)
+df_display = chargement_data(path_df_pred_display)
 
 liste_id = df['SK_ID_CURR'].tolist()
 
@@ -54,7 +55,7 @@ st.title('Dashboard Scoring Credit')
 st.subheader("Prédictions de scoring client et comparaison à l'ensemble des clients")
 
 def main():
-    id = st.selectbox('Veuillez saisir l\'identifiant d\'un client:', liste_id)
+    id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
     API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
     predict_btn = st.empty()
@@ -72,11 +73,11 @@ def main():
         st.write('Probabilité de remboursement :',int(refund),'%')
         ss = SessionState.get(details_btn=False)
         if details_btn.button('Client vs autres clients') :
-            graph(df_train,'EXT_SOURCE_3',id,df)
-            graph(df_train,'EXT_SOURCE_2',id,df)
-            graph(df_train,'PAYMENT_RATE',id,df)
-            graph(df_train,'DAYS_EMPLOYED',id,df)
-            graph(df_train,'DAYS_BIRTH',id,df)
+            graph(df_display,'EXT_SOURCE_3',id,df)
+            graph(df_display,'EXT_SOURCE_2',id,df)
+            graph(df_display,'PAYMENT_RATE',id,df)
+            graph(df_display,'DAYS_EMPLOYED',id,df)
+            graph(df_display,'DAYS_BIRTH',id,df)
 
 
 
