@@ -51,11 +51,24 @@ df_to_predict = chargement_data(path_df_red_pred)
 df_train = chargement_data(path_df_red_train)
 df_to_predict_display = chargement_data(path_df_pred_display)
 
+df_train['TARGET'] = df_train['TARGET'].astype(int)
+
 liste_id = df_to_predict['SK_ID_CURR'].tolist()
 
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
 st.subheader("Prédiction de scoring client et comparaison à l'ensemble des clients")
+
+
+#aide à la compréhension des graphs
+comment = """ 
+
+
+
+
+"""
+
+
 
 
 def main():
