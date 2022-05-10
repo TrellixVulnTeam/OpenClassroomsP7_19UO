@@ -23,6 +23,7 @@ def graph(dataframe,feature,id,df) :
     fig = plt.figure(figsize=(10, 4))
     sns.histplot(data = dataframe , x = feature, hue = 'TARGET', stat = 'density', kde=True, common_norm=False)
     plt.axvline(df[df['SK_ID_CURR']==id][feature].item(),0,2, color ='black', label='client')
+    st.write(df[df['SK_ID_CURR']==id][feature].item())
     if feature=='AMT_INCOME_TOTAL' :
         plt.xlim(0,0.5E6)
     return st.pyplot(fig)
