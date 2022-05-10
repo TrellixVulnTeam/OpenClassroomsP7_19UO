@@ -72,6 +72,7 @@ def main():
         ss.predict_btn = False
 
     ss = SessionState.get(predict_btn=False)
+    ss = SessionState.get(details_btn=False)
     predict_btn = st.empty()
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
@@ -85,7 +86,6 @@ def main():
         st.write('Probabilité de remboursement :',int(refund),'%')
         st.progress(int(refund))
         details_btn = st.empty()
-        ss = SessionState.get(details_btn=False)
 
         if details_btn.button('Client vs autres clients') :
             ss.details_btn = True
