@@ -5,6 +5,8 @@ import requests
 import matplotlib.pyplot as plt
 import seaborn as sns
 import SessionState
+import warnings
+warnings.filterwarnings("ignore")
 
 # Load Dataframe
 path_df_red_pred = 'df_red_pred.csv'
