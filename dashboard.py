@@ -99,7 +99,7 @@ def main():
         except :
             pass
 
-        ss = SessionState.get(predict_btn=False)
+    ss = SessionState.get(predict_btn=False)
 
 
 if __name__ == '__main__':
