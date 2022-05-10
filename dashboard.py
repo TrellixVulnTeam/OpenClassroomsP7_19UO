@@ -63,7 +63,7 @@ def main():
     id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
 
 
-    API_url = "https://apitestopenclassrooms.herokuapp.com/predict/"
+    API_url = "https://apiopenclassrooms.herokuapp.com/predict/"
     st.write(last_id,id)
     if last_id != id and last_id !=0:
         st.write('Hey')
