@@ -19,13 +19,6 @@ def chargement_data(path):
     return dataframe
 
 
-@st.cache  # mise en cache de la fonction pour exécution unique
-def chargement_explanation(id_input, dataframe, model, sample):
-    return interpretation(str(id_input),
-                          dataframe,
-                          model,
-                          sample=sample)
-
 def graph(dataframe,feature,id,df) :
     fig = plt.figure(figsize=(10, 4))
     sns.histplot(data = dataframe , x = feature, hue = 'TARGET', stat = 'density', kde=True, common_norm=False)
@@ -47,11 +40,17 @@ def clean(data) :
     data = data.replace(" ", "")
     return data
 
-df = chargement_data(path_df_red_pred)
-df_train = chargement_data(path_df_red_train)
-df_display = chargement_data(path_df_pred_display)
 
-liste_id = df['SK_ID_CURR'].tolist()
+
+
+
+#chargement des différents dataframe
+
+df_to_predict = chargement_data(path_df_red_pred)
+df_train = chargement_data(path_df_red_train)
+df_to_predict_display = chargement_data(path_df_pred_display)
+
+liste_id = df_to_predict['SK_ID_CURR'].tolist()
 
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
@@ -63,11 +62,10 @@ def main():
     API_url = "https://apiopenclassrooms.herokuapp.com/predict/"
     ss = SessionState.get(predict_btn=False)
     predict_btn = st.empty()
-    st.write(ss.predict_btn)
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
-        data = df[df['SK_ID_CURR']==id].to_numpy().tolist()
+        data = df_to_predict[df_to_predict['SK_ID_CURR']==id].to_numpy().tolist()
         data = clean(data)
         prediction = request(API_url,data)
         if prediction['prediction'] == 0 :
@@ -85,18 +83,17 @@ def main():
                                               default=['EXT_SOURCE'])
 
                 if 'EXT_SOURCE' in client_infos :
-                    graph(df_train,'EXT_SOURCE_3',id,df_display)
-                    graph(df_train,'EXT_SOURCE_2',id,df_display)
+                    graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
+                    graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                 if 'AMT' in client_infos :
-                    graph(df_train,'AMT_ANNUITY',id,df_display)
-                    graph(df_train,'AMT_CREDIT',id,df_display)
-                    graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
-                    graph(df_train,'AMT_GOODS_PRICE',id,df_display)
+                    graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
+                    graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
+                    graph(df_train,'AMT_INCOME_TOTAL',id,df_to_predict_display)
+                    graph(df_train,'AMT_GOODS_PRICE',id,df_to_predict_display)
                 if 'OTHERS' in client_infos :
-                    graph(df_train, 'PAYMENT_RATE', id, df_display)
-                    graph(df_train, 'DAYS_EMPLOYED', id, df_display)
-                    graph(df_train, 'DAYS_BIRTH', id, df_display)
-                ss.predict_btn = False
+                    graph(df_train, 'PAYMENT_RATE', id, df_to_predict_display)
+                    graph(df_train, 'DAYS_EMPLOYED', id, df_to_predict_display)
+                    graph(df_train, 'DAYS_BIRTH', id, df_to_predict_display)
         except :
             pass
 
