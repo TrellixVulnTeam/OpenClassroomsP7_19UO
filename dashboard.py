@@ -88,22 +88,23 @@ def main():
         details_btn = st.empty()
         if details_btn.button('Client vs autres clients') :
             ss.details_btn = True
-        if ss.details_btn :
-            client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
-                                          default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+        try :
+            if ss.details_btn :
+                client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
+                                              default=['EXT_SOURCE', 'AMT', 'OTHERS'])
 
-            if 'EXT_SOURCE' in client_infos :
-                graph(df_train,'EXT_SOURCE_3',id,df_display)
-                graph(df_train,'EXT_SOURCE_2',id,df_display)
-            if 'AMT' in client_infos :
-                graph(df_train,'AMT_ANNUITY',id,df_display)
-                graph(df_train,'AMT_CREDIT',id,df_display)
-                graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
-                graph(df_train,'AMT_GOODS_PRICE',id,df_display)
-            if 'OTHERS' in client_infos :
-                graph(df_train, 'PAYMENT_RATE', id, df_display)
-                graph(df_train, 'DAYS_EMPLOYED', id, df_display)
-                graph(df_train, 'DAYS_BIRTH', id, df_display)
+                if 'EXT_SOURCE' in client_infos :
+                    graph(df_train,'EXT_SOURCE_3',id,df_display)
+                    graph(df_train,'EXT_SOURCE_2',id,df_display)
+                if 'AMT' in client_infos :
+                    graph(df_train,'AMT_ANNUITY',id,df_display)
+                    graph(df_train,'AMT_CREDIT',id,df_display)
+                    graph(df_train,'AMT_INCOME_TOTAL',id,df_display)
+                    graph(df_train,'AMT_GOODS_PRICE',id,df_display)
+                if 'OTHERS' in client_infos :
+                    graph(df_train, 'PAYMENT_RATE', id, df_display)
+                    graph(df_train, 'DAYS_EMPLOYED', id, df_display)
+                    graph(df_train, 'DAYS_BIRTH', id, df_display)
 
 
 
