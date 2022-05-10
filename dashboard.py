@@ -81,7 +81,7 @@ def main():
         try :
             if ss.details_btn :
                 client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
-                                              default=['EXT_SOURCE', 'AMT', 'OTHERS'])
+                                              default=['EXT_SOURCE'])
 
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_display)
