@@ -13,7 +13,7 @@ path_df_red_train = 'df_red_train.csv'
 path_df_pred_display =  'df_pred_display.csv'
 
 
-@st.cache  # mise en cache de la fonction pour exécution unique
+@st.cache(allow_output_mutation=True)  # mise en cache de la fonction pour exécution unique
 def chargement_data(path):
     dataframe = pd.read_csv(path)
     return dataframe
