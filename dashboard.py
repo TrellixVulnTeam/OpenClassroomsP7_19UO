@@ -98,8 +98,7 @@ def main():
                     graph(df_train, 'DAYS_BIRTH', id, df_display)
         except :
             pass
-
-    ss = SessionState.get(predict_btn=False)
+        ss.predict_btn = False
 
 
 if __name__ == '__main__':
