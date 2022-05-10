@@ -96,9 +96,10 @@ def main():
                     graph(df_train, 'PAYMENT_RATE', id, df_display)
                     graph(df_train, 'DAYS_EMPLOYED', id, df_display)
                     graph(df_train, 'DAYS_BIRTH', id, df_display)
+                ss.predict_btn = False
         except :
             pass
-        ss.predict_btn = False
+
 
 
 if __name__ == '__main__':
