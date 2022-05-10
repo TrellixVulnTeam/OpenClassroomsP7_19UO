@@ -66,7 +66,7 @@ TARGET 0 : client avec dossier validé
 
 TARGET 1 : client avec dossier non validé
 
-Trait noir représente le client {0}
+Trait vertical noir représente le client {0}
 """
 
 
