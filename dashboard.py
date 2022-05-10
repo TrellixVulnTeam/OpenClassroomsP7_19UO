@@ -63,7 +63,7 @@ def main():
     API_url = "https://apiopenclassrooms.herokuapp.com/predict/"
     ss = SessionState.get(predict_btn=False)
     predict_btn = st.empty()
-    ss.write(ss.predict_btn)
+    st.write(ss.predict_btn)
     if predict_btn.button('Prédiction') :
         ss.predict_btn = True
     if ss.predict_btn:
