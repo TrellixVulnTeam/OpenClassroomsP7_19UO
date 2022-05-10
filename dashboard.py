@@ -56,12 +56,13 @@ liste_id = df['SK_ID_CURR'].tolist()
 # affichage formulaire
 st.title('Dashboard Scoring Credit')
 st.subheader("Prédiction de scoring client et comparaison à l'ensemble des clients")
+ss = SessionState.get(predict_btn=False)
 
 
 def main():
     id = st.selectbox('Veuillez choisir l\'identifiant d\'un client:', liste_id)
     API_url = "https://apiopenclassrooms.herokuapp.com/predict/"
-    ss = SessionState.get(predict_btn=False)
+    #ss = SessionState.get(predict_btn=False)
     predict_btn = st.empty()
     st.write(ss.predict_btn)
     if predict_btn.button('Prédiction') :
