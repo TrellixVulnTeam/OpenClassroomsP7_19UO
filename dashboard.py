@@ -105,12 +105,13 @@ def main():
                     graph(df_train, 'PAYMENT_RATE', id, df_display)
                     graph(df_train, 'DAYS_EMPLOYED', id, df_display)
                     graph(df_train, 'DAYS_BIRTH', id, df_display)
+        except :
+            pass
 
 
 
 
 if __name__ == '__main__':
-
     main()
 
 
