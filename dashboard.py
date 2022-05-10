@@ -62,10 +62,10 @@ st.subheader("Prédiction de scoring client et comparaison à l'ensemble des cli
 
 #aide à la compréhension des graphs
 comment = """ 
+TARGET 0 : client avec dossier validé
+TARGET 1 : client avec dossier non validé
 
-
-
-
+Trait noir représente le client {0}
 """
 
 
@@ -93,6 +93,7 @@ def main():
             ss.details_btn = True
         try :
             if ss.details_btn :
+                st.write(comment.format(id))
                 client_infos = st.multiselect("Filtre infos client:", ['EXT_SOURCE', 'AMT', 'OTHERS'],
                                               default=['EXT_SOURCE'])
 
