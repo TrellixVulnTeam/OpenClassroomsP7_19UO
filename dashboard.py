@@ -42,7 +42,17 @@ def clean(data) :
     return data
 
 
-
+def graph_ext_source() :
+    graph(df_train, 'EXT_SOURCE_3', id, df_to_predict_display)
+    st.latex(r'''
+         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
+         }
+        ''')
+    graph(df_train, 'EXT_SOURCE_2', id, df_to_predict_display)
+    st.latex(r'''
+         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
+         }
+         ''')
 #chargement des différents dataframe
 
 df_to_predict = chargement_data(path_df_red_pred)
@@ -97,16 +107,7 @@ def main():
                 st.write(comment.format(id))
 
                 if 'EXT_SOURCE' in client_infos :
-                    graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
-                    st.latex(r'''
-                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
-                         }
-                        ''')
-                    graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
-                    st.latex(r'''
-                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
-                         }
-                         ''')
+                    graph_ext_source()
                 if 'AMT' in client_infos :
                     graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
                     graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
