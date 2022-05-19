@@ -21,7 +21,7 @@ def chargement_data(path):
 
 def graph(dataframe,feature,id,df) :
     fig = plt.figure(figsize=(10, 4))
-    sns.histplot(data = dataframe , x = feature, hue = 'TARGET', stat = 'density', kde=True, common_norm=False, legend=True)
+    sns.histplot(data = dataframe , x = feature, hue = 'Cible', stat = 'density', kde=True, common_norm=False, legend=True)
     plt.axvline(df[df['SK_ID_CURR']==id][feature].item(),0,2, color ='black', label='client')
     st.write("Valeur de la feature",feature,"pour le client :", df[df['SK_ID_CURR']==id][feature].item())
     if feature=='AMT_INCOME_TOTAL' :
@@ -97,25 +97,25 @@ def main():
                 st.write(comment.format(id))
 
                 if 'EXT_SOURCE' in client_infos :
-                    graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
+                    graph(df_train,'Revenu_Ext_3',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
                          }
                         ''')
-                    graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
+                    graph(df_train,'Revenu_Ext_2',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
                          }
                          ''')
                 if 'AMT' in client_infos :
-                    graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
-                    graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
-                    graph(df_train,'AMT_INCOME_TOTAL',id,df_to_predict_display)
-                    graph(df_train,'AMT_GOODS_PRICE',id,df_to_predict_display)
+                    graph(df_train,'Total_Annuel',id,df_to_predict_display)
+                    graph(df_train,'Total_Credit',id,df_to_predict_display)
+                    graph(df_train,'Total_Revenus',id,df_to_predict_display)
+                    graph(df_train,'Total_Biens_Detenus',id,df_to_predict_display)
                 if 'OTHERS' in client_infos :
-                    graph(df_train, 'PAYMENT_RATE', id, df_to_predict_display)
-                    graph(df_train, 'DAYS_EMPLOYED', id, df_to_predict_display)
-                    graph(df_train, 'DAYS_BIRTH', id, df_to_predict_display)
+                    graph(df_train, 'Taux_Paiement', id, df_to_predict_display)
+                    graph(df_train, 'Jours_Employe', id, df_to_predict_display)
+                    graph(df_train, 'jours_Naissance', id, df_to_predict_display)
         except :
             pass
 
