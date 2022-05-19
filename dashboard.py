@@ -99,15 +99,14 @@ def main():
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
                     st.latex(r'''
-                    \underline{Courbes représentant les distributions des revenus ext\érieurs de type 3 ({EXT}_{SOURCE}_{3}) 
-                             pour les dossiers validés (courbe bleue) et non validés (courbe orange)}''')
+                    \underline{Courbes} représentant les distributions des revenus ext\érieurs de type 3 ({EXT}_{SOURCE}_{3}) 
+                             pour les dossiers validés (courbe bleue) et non validés (courbe orange)''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{a + ar + a r^2 + a r^3 + \cdots + a r^{n-1}} =
                          \sum_{k=0}^{n-1} ar^k =
                          a \left(\frac{1-r^{n}}{1-r}\right)
                          ''')
-                    st.write('Probabilité de remboursement :', int(refund), '%')
                 if 'AMT' in client_infos :
                     graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
                     graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
