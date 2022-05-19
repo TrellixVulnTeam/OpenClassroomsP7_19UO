@@ -99,15 +99,15 @@ def main():
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3\ 
+                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
                          }
                         ''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2\ 
+                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
                          }
-                        ''')
-               if 'AMT' in client_infos :
+                         ''')
+                if 'AMT' in client_infos :
                     graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
                     graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
                     graph(df_train,'AMT_INCOME_TOTAL',id,df_to_predict_display)
