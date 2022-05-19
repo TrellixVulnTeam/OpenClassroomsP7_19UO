@@ -43,8 +43,6 @@ def clean(data) :
 
 
 
-
-
 #chargement des différents dataframe
 
 df_to_predict = chargement_data(path_df_red_pred)
@@ -100,7 +98,10 @@ def main():
 
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
+                    st.write('''Courbes représentant les distributions des revenus extérieurs de type 3 (EXT_SOURCE_3) 
+                             pour les dossiers validés (courbe bleue) et non validés (courbe orange)''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
+                    st.write('Probabilité de remboursement :', int(refund), '%')
                 if 'AMT' in client_infos :
                     graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
                     graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
