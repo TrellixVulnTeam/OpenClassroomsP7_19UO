@@ -115,7 +115,7 @@ def main():
                 if 'OTHERS' in client_infos :
                     graph(df_train, 'Taux_Paiement', id, df_to_predict_display)
                     graph(df_train, 'Jours_Employe', id, df_to_predict_display)
-                    graph(df_train, 'jours_Naissance', id, df_to_predict_display)
+                    graph(df_train, 'Jours_Naissance', id, df_to_predict_display)
         except :
             pass
 
