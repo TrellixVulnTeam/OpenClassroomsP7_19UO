@@ -100,15 +100,14 @@ def main():
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3\ 
-                         pour\ prêt\ remboursé\ (courbe\ bleue)\ et\ non\ remboursés\ (coube\ orange)}
+                         }
                         ''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{a + ar + a r^2 + a r^3 + \cdots + a r^{n-1}} =
-                         \sum_{k=0}^{n-1} ar^k =
-                         a \left(\frac{1-r^{n}}{1-r}\right)
-                         ''')
-                if 'AMT' in client_infos :
+                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2\ 
+                         }
+                        ''')
+               if 'AMT' in client_infos :
                     graph(df_train,'AMT_ANNUITY',id,df_to_predict_display)
                     graph(df_train,'AMT_CREDIT',id,df_to_predict_display)
                     graph(df_train,'AMT_INCOME_TOTAL',id,df_to_predict_display)
