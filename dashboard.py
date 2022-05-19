@@ -98,7 +98,7 @@ def main():
 
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
-                    st.latex(r'''\text{\underline{Courbes représentant les distributions des revenus ext\érieurs de type 3 ({EXT}_{SOURCE}_{3}) 
+                    st.latex('''\text{\underline{Courbes représentant les distributions des revenus ext\érieurs de type 3 ({EXT}_{SOURCE}_{3}) 
                              pour les dossiers validés (courbe bleue) et non validés (courbe orange)}}''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.write('''Courbes représentant les distributions des revenus extérieurs de type 2 (EXT_SOURCE_2) 
