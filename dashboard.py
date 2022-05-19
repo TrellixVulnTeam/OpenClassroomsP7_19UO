@@ -53,6 +53,7 @@ def graph_ext_source() :
          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
          }
          ''')
+    return
 #chargement des différents dataframe
 
 df_to_predict = chargement_data(path_df_red_pred)
