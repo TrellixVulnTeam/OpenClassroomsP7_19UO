@@ -43,17 +43,20 @@ def clean(data) :
 
 
 def graph_ext_source() :
-    graph(df_train, 'EXT_SOURCE_3', id, df_to_predict_display)
-    st.latex(r'''
-         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
-         }
-        ''')
-    graph(df_train, 'EXT_SOURCE_2', id, df_to_predict_display)
-    st.latex(r'''
-         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
-         }
-         ''')
-    return
+    try :
+        graph(df_train, 'EXT_SOURCE_3', id, df_to_predict_display)
+        st.latex(r'''
+             \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
+             }
+            ''')
+        graph(df_train, 'EXT_SOURCE_2', id, df_to_predict_display)
+        st.latex(r'''
+             \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
+             }
+             ''')}
+    except :
+        return
+
 #chargement des différents dataframe
 
 df_to_predict = chargement_data(path_df_red_pred)
