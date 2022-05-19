@@ -53,7 +53,7 @@ def graph_ext_source() :
         st.latex(r'''
              \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
              }
-             ''')}
+             ''')
     except :
         return
 
