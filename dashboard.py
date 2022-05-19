@@ -99,7 +99,7 @@ def main():
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{a + ar}
+                         \underline{Courbes}
                         ''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
