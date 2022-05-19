@@ -60,9 +60,9 @@ st.subheader("Prédiction de scoring client et comparaison à l'ensemble des cli
 
 #aide à la compréhension des graphs
 comment = """ 
-TARGET 0 : client avec dossier validé
+Cible 0 : client avec dossier validé
 
-TARGET 1 : client avec dossier non validé
+Cible 1 : client avec dossier non validé
 
 Trait vertical noir représente le client {0}
 """
