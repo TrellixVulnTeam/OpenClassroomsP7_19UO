@@ -99,7 +99,8 @@ def main():
                 if 'EXT_SOURCE' in client_infos :
                     graph(df_train,'EXT_SOURCE_3',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{Courbes\ a}
+                         \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3\ 
+                         pour\ prêt\ remboursé\ (courbe\ bleue)\ et\ non\ remboursés\ (coube\ orange)}
                         ''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
