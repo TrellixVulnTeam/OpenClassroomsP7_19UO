@@ -103,7 +103,7 @@ def main():
                              pour les dossiers validés (courbe bleue) et non validés (courbe orange)}''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
-                         \underline{a + ar} + a r^2 + a r^3 + \cdots + a r^{n-1} =
+                         \underline{a + ar + a r^2 + a r^3 + \cdots + a r^{n-1}} =
                          \sum_{k=0}^{n-1} ar^k =
                          a \left(\frac{1-r^{n}}{1-r}\right)
                          ''')
