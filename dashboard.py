@@ -97,12 +97,12 @@ def main():
                 st.write(comment.format(id))
 
                 if 'EXT_SOURCE' in client_infos :
-                    graph(df_train,'Revenu_Ext_3',id,df_to_predict_display)
+                    graph(df_train,'Revenus_Ext_3',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 3 
                          }
                         ''')
-                    graph(df_train,'Revenu_Ext_2',id,df_to_predict_display)
+                    graph(df_train,'Revenus_Ext_2',id,df_to_predict_display)
                     st.latex(r'''
                          \underline{Courbes\ representant\ les\ distributions\ des\ revenus\ exterieurs\ de\ type\ 2 
                          }
