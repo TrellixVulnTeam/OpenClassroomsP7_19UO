@@ -103,9 +103,9 @@ def main():
                              pour les dossiers validés (courbe bleue) et non validés (courbe orange)}''')
                     graph(df_train,'EXT_SOURCE_2',id,df_to_predict_display)
                     st.latex(r'''
-                         a+ ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
+                         a + ar + a r^2 + a r^3 + \cdots + a r^{n-1} =
                          \sum_{k=0}^{n-1} ar^k =
-                         a \left(\frac{1-r^{n}}{1-r}\right)}
+                         a \left(\frac{1-r^{n}}{1-r}\right)
                          ''')
                     st.write('Probabilité de remboursement :', int(refund), '%')
                 if 'AMT' in client_infos :
