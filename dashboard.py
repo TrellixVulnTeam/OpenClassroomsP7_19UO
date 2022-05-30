@@ -8,9 +8,9 @@ import SessionState
 
 
 # Load Dataframe
-path_df_red_pred = '/data/df_red_pred.csv'
-path_df_red_train = '/data/df_red_train.csv'
-path_df_pred_display =  '/data/df_pred_display.csv'
+path_df_red_pred = 'data/df_red_pred.csv'
+path_df_red_train = 'data/df_red_train.csv'
+path_df_pred_display =  'data/df_pred_display.csv'
 
 
 @st.cache(allow_output_mutation=True)  # mise en cache de la fonction pour exécution unique
