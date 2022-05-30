@@ -16,4 +16,4 @@ Projet n°7 : "Implémentez un modèle de scoring"
 Source des données : https://www.kaggle.com/c/home-credit-default-risk/data
 
 ## Vidéo du dashboard 
-[![Video dashboard]](https://youtu.be/Xrx6LvBNug0)
+[Video dashboard](https://youtu.be/Xrx6LvBNug0)
