@@ -1,8 +1,5 @@
-import pickle
 from fastapi import FastAPI
-import re
 import joblib
-import numpy as np
 import ast
 import uvicorn
 
