@@ -20,5 +20,7 @@ Source des données : https://www.kaggle.com/c/home-credit-default-risk/data
 
 
 df_pred_display.csv : jeu de données pour l'affichage des infos sur les clients dont on veut la prédiction
+
 df_red_pred.csv : jeu de données réduit pour envoyer via l'API
+
 df_red_train : jeu de données réduit pour l'affichage des infos sur les clients dont on connait déjà la valeur de la target
