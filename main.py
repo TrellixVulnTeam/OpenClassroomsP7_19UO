@@ -12,8 +12,8 @@ app = FastAPI()
 model = joblib.load(open("model.pkl", "rb"))
 
 @app.get("/")
-async def root():
-   return {"message": "Hello World"}
+def root():
+   return {"message": "Scoring prediction"}
 
 @app.get("/predict/")
 def predict(data):
